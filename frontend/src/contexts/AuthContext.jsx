@@ -1,7 +1,9 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext();
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const normalizedBaseUrl = rawBaseUrl.replace(/\/+$/, '');
+const BASE_URL = normalizedBaseUrl.endsWith('/api') ? normalizedBaseUrl : `${normalizedBaseUrl}/api`;
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);

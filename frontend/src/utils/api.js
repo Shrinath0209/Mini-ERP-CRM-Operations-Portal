@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const normalizedBaseUrl = rawBaseUrl.replace(/\/+$/, '');
+const BASE_URL = normalizedBaseUrl.endsWith('/api') ? normalizedBaseUrl : `${normalizedBaseUrl}/api`;
 
 const request = async (endpoint, options = {}) => {
   const token = localStorage.getItem('token');
