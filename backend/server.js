@@ -34,11 +34,13 @@ initDatabase().then(() => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
   });
 
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-    console.log(`API available at http://localhost:${PORT}/api`);
-  });
+  const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running successfully on port ${PORT}`);
+    console.log(`Local API: http://localhost:${PORT}/api`);
+    console.log(`Live API URL: https://onrender.com`);
 }).catch(err => {
-  console.error('Failed to initialize database:', err);
-  process.exit(1);
+    console.error('Failed to initialize database:', err);
+    process.exit(1);
 });
