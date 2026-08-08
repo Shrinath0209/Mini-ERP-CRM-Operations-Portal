@@ -1,1 +1,1 @@
-{"version": 2, "services": {"frontend": {"src": "frontend", "type": "web"}, "backend": {"src": "backend", "type": "web"}}}
+{"version": 2, "services": {"frontend": {"type": "web"}, "backend": {"type": "web"}}}
